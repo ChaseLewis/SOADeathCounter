@@ -11,11 +11,12 @@ const KILL_COUNT: i32 = 2500;
 async fn main() -> Result<()> {
 
     println!("Skies of Arcadia Kill Counter");
-    let mut completed = false;
-    let progressbar = ProgressBar::new(KILL_COUNT as u64);
+
     loop {
         println!("Waiting for Dolphin...");
+        let mut completed = false;
         let memory = SOAMemoryMap::wait_for_dolphin();
+        let progressbar = ProgressBar::new(KILL_COUNT as u64);
 
         while memory.is_running() {
             
